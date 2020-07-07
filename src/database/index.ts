@@ -5,12 +5,12 @@ class Database {
 
   constructor() {
     this.database = Knex({
-      client: 'mysql',
+      client: 'pg',
       connection: {
         host: '127.0.0.1',
-        user: 'root',
-        password: 'test',
-        database: 'dbaula',
+        user: 'user',
+        password: 'password',
+        database: 'customer',
       },
     });
   }

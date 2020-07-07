@@ -1,14 +1,17 @@
-import IWorker from '../models';
-import Worker from '../repositories/Worker';
+import Customer from '../repositories/Customer';
+import ICustomer from '../models';
+import HttpError from '../common/HttpError'
 
-const createSetting = async (data: IWorker): Promise<IWorker> => {
-  const worker = new Worker();
+const createCustomer = async (data: ICustomer) => {
+  const customer = new Customer();
 
-  const salary = data.salary || 1000;
+  const emailExist = await customer.getByEmail(data.email);
 
-  const result = await worker.create({ name: data.name, salary });
+  if (emailExist) {
+    throw new HttpError('Existe um cadastro com este email');
+  }
 
-  return result;
-};
+  return customer.create(data);
+}
 
-export default createSetting;
+export default createCustomer;

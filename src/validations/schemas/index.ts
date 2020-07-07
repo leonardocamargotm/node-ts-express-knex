@@ -1,3 +1,3 @@
-import worker from './worker';
+import customer from './customer';
 
-export default worker;
+export default customer;

@@ -1,3 +1,3 @@
-import IWorker from './IWorker';
+import ICustomer from './ICustomer';
 
-export default IWorker;
+export default ICustomer;

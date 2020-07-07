@@ -1,6 +1,8 @@
+import 'express-async-errors';
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 import routes from './routes';
+import errroHandler from './errorHandler'
 
 class Server {
   public app: Express;
@@ -10,6 +12,7 @@ class Server {
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
     this.app.use(routes);
+    this.app.use(errroHandler);
   }
 
   public start(port: number): void {
